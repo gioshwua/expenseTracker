@@ -1,14 +1,14 @@
 import React from "react";
 
-export const TodoForm = () => {
-  const [form, setForm] = React.useState({
+export const TodoForm = ({ addTodo }) => {
+  const [todo, setTodo] = React.useState({
     id: "",
     task: "",
     isComplete: false,
   });
 
   const changeTask = (event) => {
-    setForm(function (prev) {
+    setTodo(function (prev) {
       return {
         ...prev,
         task: event.target.value,
@@ -19,14 +19,25 @@ export const TodoForm = () => {
   const Submit = (event) => {
     event.preventDefault();
 
-    console.log(form);
+    if (todo.task.trim()) {
+      //remove white spaces from the string
+      addTodo({
+        ...todo,
+        id: Math.floor(Math.random() * 10000),
+      });
+      //reset task input
+      setTodo({
+        ...todo,
+        task: "",
+      });
+    }
   };
   return (
     <form onSubmit={Submit}>
       <input
         placeholder="Add Task Here"
         name="task"
-        value={form.task}
+        value={todo.task}
         onChange={changeTask}
       />
       <button>ADD TASK</button>
