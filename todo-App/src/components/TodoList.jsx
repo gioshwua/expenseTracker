@@ -1,10 +1,10 @@
 import React from "react";
 import { Todo } from "./Todo";
 
-export const TodoList = ({ todos }) => {
+export const TodoList = (props) => {
   return (
     <ul>
-      {todos.map((todo) => (
+      {props.todos.map((todo) => (
         <Todo key={todo.id} todo={todo} />
       ))}
     </ul>

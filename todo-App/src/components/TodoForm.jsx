@@ -1,6 +1,6 @@
 import React from "react";
 
-export const TodoForm = ({ addTodo }) => {
+export const TodoForm = (props) => {
   const [todo, setTodo] = React.useState({
     id: "",
     task: "",
@@ -21,7 +21,7 @@ export const TodoForm = ({ addTodo }) => {
 
     if (todo.task.trim()) {
       //remove white spaces from the string
-      addTodo({
+      props.addTodo({
         ...todo,
         id: Math.floor(Math.random() * 10000),
       });

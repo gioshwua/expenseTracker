@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Todo = ({ todo }) => {
+export const Todo = (props) => {
   const style = {
     display: "flex",
     gap: "5px",
@@ -8,7 +8,7 @@ export const Todo = ({ todo }) => {
   return (
     <div style={style}>
       <input type="checkbox" />
-      <li>{todo.task}</li>
+      <li>{props.todo.task}</li>
       <button>X</button>
     </div>
   );
